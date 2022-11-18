@@ -2,7 +2,7 @@ import { Link, Outlet, useLoaderData } from "@remix-run/react";
 import { json } from "@remix-run/node";
 
 import { requireUserId } from "~/session.server";
-import { useUser } from "~/utils";
+//import { useUser } from "~/utils";
 import { getProjectListItems } from "~/models/project.server";
 import type { LoaderArgs } from "@remix-run/server-runtime";
 import Header from "~/components/navs/Header";
@@ -16,7 +16,7 @@ export async function loader({ request }: LoaderArgs) {
 
 export default function ProjectLayout() {
   const data = useLoaderData<typeof loader>();
-  const user = useUser();
+  // const user = useUser();
 
   return (
     <div>

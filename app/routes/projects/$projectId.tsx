@@ -1,6 +1,6 @@
 import type { ActionArgs, LoaderArgs } from "@remix-run/node";
 import { json, redirect } from "@remix-run/node";
-import { Form, useCatch, useLoaderData } from "@remix-run/react";
+import { Form, useLoaderData } from "@remix-run/react";
 import invariant from "tiny-invariant";
 import { deleteProject, getProject } from "~/models/project.server";
 import { requireUserId } from "~/session.server";

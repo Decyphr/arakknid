@@ -132,7 +132,7 @@ export default function LoginPage() {
           </div>
 
           <input type="hidden" name="redirectTo" value={redirectTo} />
-          <button type="submit" className="btn-wide btn w-full">
+          <button type="submit" className="btn w-full">
             Log in
           </button>
           <div className="flex items-center justify-between">
