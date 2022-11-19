@@ -49,10 +49,10 @@ model Project {
   user   User   @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   userId String
 
-  issues Issue[]
+  tickets Ticket[]
 }
 
-model Issue {
+model Ticket {
   id        String @id @default(cuid())
   summary   String
 

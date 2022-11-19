@@ -7,11 +7,6 @@ import { z } from "zod";
 import { requireUserId } from "~/session.server";
 import { createProject } from "~/models/project.server";
 
-type ProjectForm = {
-  title?: string;
-  description?: string;
-};
-
 export async function action({ request }: ActionArgs) {
   const userId = await requireUserId(request);
 
@@ -37,8 +32,12 @@ export async function action({ request }: ActionArgs) {
   } catch (e: any) {
     // ZodError will store the field name under issue.path
     // const fields = e.issues.map((issue: any) => issue.path[0]);
+    type ProjectFormErrors = {
+      title?: string;
+      description?: string;
+    };
 
-    let errors: ProjectForm = {};
+    let errors: ProjectFormErrors = {};
 
     e.issues.forEach((issue: any) => {
       errors = {

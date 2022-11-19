@@ -11,7 +11,7 @@ export function getProject({
   userId: User["id"];
 }) {
   return prisma.project.findFirst({
-    select: { id: true, title: true, description: true, issues: true },
+    select: { id: true, title: true, description: true },
     where: { id, userId },
   });
 }

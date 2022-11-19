@@ -1,13 +1,13 @@
-import type { Issue, Project } from "@prisma/client";
+import type { Ticket, Project } from "@prisma/client";
 import { prisma } from "~/db.server";
 
-export function createIssue({
+export function createTicket({
   summary,
   projectId,
-}: Pick<Issue, "summary"> & {
+}: Pick<Ticket, "summary"> & {
   projectId: Project["id"];
 }) {
-  return prisma.issue.create({
+  return prisma.ticket.create({
     data: {
       summary,
       project: {
