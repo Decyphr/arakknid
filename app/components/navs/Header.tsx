@@ -1,6 +1,9 @@
 import { Form, Link } from "@remix-run/react";
+import { useUser } from "~/utils";
 
 export default function Header() {
+  const user = useUser();
+
   return (
     <div className="navbar bg-base-100">
       <div className="flex-1">
@@ -12,7 +15,7 @@ export default function Header() {
         <div className="dropdown-end dropdown">
           <label tabIndex={0} className="btn-ghost btn-circle avatar btn">
             <div className="w-10 rounded-full">
-              <img src="https://placeimg.com/40/40/people" />
+              <img src="https://placeimg.com/40/40/people" alt="Avatar" />
             </div>
           </label>
           <ul

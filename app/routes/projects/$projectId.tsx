@@ -2,6 +2,7 @@ import type { ActionArgs, LoaderArgs } from "@remix-run/node";
 import { json, redirect } from "@remix-run/node";
 import { Form, useLoaderData } from "@remix-run/react";
 import invariant from "tiny-invariant";
+import { createIssue } from "~/models/issue.server";
 import { deleteProject, getProject } from "~/models/project.server";
 import { requireUserId } from "~/session.server";
 
@@ -20,7 +21,10 @@ export async function action({ request, params }: ActionArgs) {
   const userId = await requireUserId(request);
   invariant(params.projectId, "projectId not found");
 
-  await deleteProject({ userId, id: params.projectId });
+  // await deleteProject({ userId, id: params.projectId });
+  const summary = "My new issue summary";
+
+  await createIssue({ summary, projectId: params.projectId });
 
   return redirect("/projects");
 }
@@ -32,14 +36,24 @@ export default function ProjectDetailsPage() {
     <div>
       {project.title}
       <p>{project?.description}</p>
+      <ul>
+        {project.issues?.map((issue) => (
+          <li key={issue.id}>{issue.summary}</li>
+        ))}
+      </ul>
       <Form method="post">
+        <button type="submit" className="btn">
+          New Issue
+        </button>
+      </Form>
+      {/* <Form method="post">
         <button
           type="submit"
           className="rounded bg-red-500  py-2 px-4 text-white hover:bg-red-600 focus:bg-red-400"
         >
           Delete
         </button>
-      </Form>
+      </Form> */}
     </div>
   );
 }
