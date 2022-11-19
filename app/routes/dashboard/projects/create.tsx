@@ -11,7 +11,7 @@ export async function action({ request }: ActionArgs) {
   const userId = await requireUserId(request);
 
   // validate
-  const formPayload = Object.fromEntries(await request.formData());
+  const formData = Object.fromEntries(await request.formData());
   const validationSchema = z.object({
     title: z
       .string()
@@ -20,7 +20,7 @@ export async function action({ request }: ActionArgs) {
   });
 
   try {
-    const validatedForm = validationSchema.parse(formPayload);
+    const validatedForm = validationSchema.parse(formData);
     const { title, description } = validatedForm;
     const project = await createProject({
       title,
@@ -28,7 +28,7 @@ export async function action({ request }: ActionArgs) {
       userId,
     });
 
-    return redirect(`/projects/${project.id}`);
+    return redirect(`/dashboard/projects/${project.id}`);
   } catch (e: any) {
     // ZodError will store the field name under issue.path
     // const fields = e.issues.map((issue: any) => issue.path[0]);
@@ -47,8 +47,9 @@ export async function action({ request }: ActionArgs) {
     });
 
     return json({
+      status: 400,
       errors,
-      formPayload,
+      formData,
     });
   }
 }

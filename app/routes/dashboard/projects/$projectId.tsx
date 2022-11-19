@@ -22,7 +22,7 @@ export async function action({ request, params }: ActionArgs) {
 
   await deleteProject({ userId, id: params.projectId });
 
-  return redirect("/projects");
+  return redirect("/dashboard/projects");
 }
 
 export default function ProjectDetailsPage() {
