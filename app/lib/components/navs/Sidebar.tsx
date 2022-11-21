@@ -4,11 +4,12 @@ import { useUser } from "~/utils";
 import SidebarNavLink from "./SidebarNavLink";
 import {
   BookOpenIcon,
+  ChartPieIcon,
   Cog8ToothIcon,
   RectangleStackIcon,
-  UserCircleIcon,
 } from "@heroicons/react/20/solid";
 import SidebarNavMenu from "./SidebarNavMenu";
+import { Link } from "@remix-run/react";
 
 export type NavLink = {
   name: string;
@@ -24,7 +25,7 @@ export default function Sidebar() {
       name: "Dashboard",
       href: "/dashboard",
       current: true,
-      icon: <Cog8ToothIcon />,
+      icon: <ChartPieIcon />,
       nested: [],
     },
 
@@ -64,9 +65,10 @@ export default function Sidebar() {
         <span className="block h-10 w-32 rounded-lg bg-zinc-200"></span>
 
         <nav aria-label="Main Nav" className="mt-6 flex flex-col space-y-1">
-          {/* basic link */}
           {navigation.map((link: NavLink, idx) => {
-            if (!link?.nested?.length)
+            if (link?.nested?.length)
+              return <SidebarNavMenu key={`${idx}-${link.name}`} {...link} />;
+            else {
               return (
                 <SidebarNavLink
                   key={`${idx}-${link.name}`}
@@ -74,15 +76,14 @@ export default function Sidebar() {
                   {...link}
                 />
               );
-
-            return <SidebarNavMenu key={`${idx}-${link.name}`} {...link} />;
+            }
           })}
         </nav>
       </div>
 
       <div className="sticky inset-x-0 bottom-0 border-t border-zinc-100">
-        <a
-          href="#"
+        <Link
+          to="/dashboard"
           className="flex shrink-0 items-center bg-white p-4 hover:bg-zinc-50"
         >
           <img
@@ -98,7 +99,7 @@ export default function Sidebar() {
               <span>{user.email}</span>
             </p>
           </div>
-        </a>
+        </Link>
       </div>
     </div>
   );

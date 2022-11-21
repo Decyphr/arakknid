@@ -28,7 +28,7 @@ export default function ProjectIndexPage() {
         </li>
         {data.projectListItems.map(({ id, title }: any) => (
           <li key={id}>
-            <Link to={`projects/${id}`}>{title}</Link>
+            <Link to={`${id}`}>{title}</Link>
           </li>
         ))}
       </ul>

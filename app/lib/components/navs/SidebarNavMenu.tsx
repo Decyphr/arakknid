@@ -26,8 +26,8 @@ export default function SidebarNavMenu(props: NavLink) {
       </summary>
 
       <nav aria-label="Teams Nav" className="mt-1.5 ml-8 flex flex-col">
-        {props?.nested?.map((child) => (
-          <SidebarNavLink {...child} />
+        {props?.nested?.map((child, idx) => (
+          <SidebarNavLink key={`${idx}-${child.name}`} {...child} />
         ))}
       </nav>
     </details>
