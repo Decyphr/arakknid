@@ -1,8 +1,13 @@
 import { z } from "zod";
 import * as React from "react";
-import { ErrorBoundaryComponent, json, redirect } from "@remix-run/node";
+import { json, redirect } from "@remix-run/node";
 import { LockClosedIcon } from "@heroicons/react/20/solid";
-import type { ActionArgs, LoaderArgs, MetaFunction } from "@remix-run/node";
+import type {
+  ActionArgs,
+  LoaderArgs,
+  MetaFunction,
+  ErrorBoundaryComponent,
+} from "@remix-run/node";
 import { Form, Link, useActionData, useSearchParams } from "@remix-run/react";
 
 import { createUserSession, getUserId } from "~/session.server";
@@ -110,15 +115,6 @@ export default function LoginPage() {
           <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-zinc-900">
             Sign in to your account
           </h2>
-          <p className="mt-2 text-center text-sm text-zinc-600">
-            Or{" "}
-            <a
-              href="#"
-              className="font-medium text-indigo-600 hover:text-indigo-500"
-            >
-              start your 14-day free trial
-            </a>
-          </p>
         </div>
         <Form method="post" className="mt-8 space-y-6">
           <div>

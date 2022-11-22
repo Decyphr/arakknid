@@ -1,5 +1,5 @@
 import { Link } from "@remix-run/react";
-import { NavLink } from "./Sidebar";
+import type { NavLink } from "./Sidebar";
 
 export default function SidebarNavLink(props: NavLink) {
   const baseClasses = "flex items-center rounded-lg px-4 py-2";

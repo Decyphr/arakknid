@@ -1,5 +1,5 @@
-import { NavLink } from "./Sidebar";
 import SidebarNavLink from "./SidebarNavLink";
+import type { NavLink } from "./Sidebar";
 
 export default function SidebarNavMenu(props: NavLink) {
   return (

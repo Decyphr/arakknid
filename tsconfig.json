@@ -16,7 +16,8 @@
     "forceConsistentCasingInFileNames": true,
     "baseUrl": ".",
     "paths": {
-      "~/*": ["./app/*"]
+      "@ui/*": ["./app/lib/components/ui"],
+      "~/*": ["./app/*"],
     },
     "skipLibCheck": true,
 

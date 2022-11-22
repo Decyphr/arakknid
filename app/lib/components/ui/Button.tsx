@@ -1,6 +1,6 @@
+import type { ReactNode } from "react";
 import type { VariantProps } from "class-variance-authority";
 import { cva } from "class-variance-authority";
-import { ReactNode } from "react";
 
 const button = cva(
   "inline-flex justify-center border border-transparent text-base font-medium transition focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 sm:w-auto sm:text-sm shadow-sm",

@@ -2,8 +2,6 @@ import { Form, Link } from "@remix-run/react";
 import { useUser } from "~/utils";
 
 export default function Header() {
-  const user = useUser();
-
   return (
     <div className="navbar bg-base-100">
       <div className="flex-1">
@@ -20,7 +18,7 @@ export default function Header() {
           </label>
           <ul
             tabIndex={0}
-            className="dropdown-content menu rounded-box menu-compact mt-3 w-52 bg-base-100 p-2 shadow"
+            className="dropdown-content menu rounded-box menu-compact bg-base-100 mt-3 w-52 p-2 shadow"
           >
             <li>
               <Link to="/" className="justify-between">

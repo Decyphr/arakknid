@@ -1,6 +1,7 @@
-import { ReactNode } from "react";
-import { useUser } from "~/utils";
+import type { ReactNode } from "react";
+import { Link } from "@remix-run/react";
 
+import { useUser } from "~/utils";
 import SidebarNavLink from "./SidebarNavLink";
 import {
   BookOpenIcon,
@@ -9,7 +10,6 @@ import {
   RectangleStackIcon,
 } from "@heroicons/react/20/solid";
 import SidebarNavMenu from "./SidebarNavMenu";
-import { Link } from "@remix-run/react";
 
 export type NavLink = {
   name: string;
