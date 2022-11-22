@@ -1,5 +1,4 @@
 import { Form, Link } from "@remix-run/react";
-import { useUser } from "~/utils";
 
 export default function Header() {
   return (
