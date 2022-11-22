@@ -7,7 +7,7 @@ import * as React from "react";
 import { getUserId, createUserSession } from "~/session.server";
 
 import { createUser, getUserByEmail } from "~/models/user.server";
-import { safeRedirect, validateEmail } from "~/utils";
+import { safeRedirect } from "~/utils";
 import InputErrorMessage from "~/lib/components/forms/InputErrorMessage";
 import { z } from "zod";
 

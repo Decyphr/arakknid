@@ -94,8 +94,7 @@ export default function Sidebar() {
 
           <div className="ml-1.5">
             <p className="text-xs">
-              <strong className="block font-medium">Eric Frusciante</strong>
-
+              <strong className="block font-medium">Account</strong>
               <span>{user.email}</span>
             </p>
           </div>
