@@ -1,5 +1,3 @@
-import { Button } from "~/lib/components/ui/Button";
-
 export default function DashboardPage() {
   return (
     <div>

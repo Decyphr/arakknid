@@ -11,7 +11,6 @@ import {
   RectangleStackIcon,
 } from "@heroicons/react/20/solid";
 import SidebarNavMenu from "./SidebarNavMenu";
-import LogoutButton from "../LogoutButton";
 
 export type NavLink = {
   name: string;
@@ -45,12 +44,6 @@ export default function Sidebar() {
           icon: <RectangleStackIcon />,
         },
       ],
-    },
-    {
-      name: "Styleguide",
-      href: "/styleguide",
-      current: false,
-      icon: <BookOpenIcon />,
     },
     {
       name: "Settings",
