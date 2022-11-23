@@ -86,8 +86,8 @@ Prior to your first deployment, you'll need to do a few things:
 - Create two apps on Fly, one for staging and one for production:
 
   ```sh
-  fly apps create simple-bugtracker-7e17
-  fly apps create simple-bugtracker-7e17-staging
+  fly apps create remix-starter-7e17
+  fly apps create remix-starter-7e17-staging
   ```
 
   > **Note:** Make sure this name matches the `app` set in your `fly.toml` file. Otherwise, you will not be able to deploy.
@@ -109,8 +109,8 @@ Prior to your first deployment, you'll need to do a few things:
 - Add a `SESSION_SECRET` to your fly app secrets, to do this you can run the following commands:
 
   ```sh
-  fly secrets set SESSION_SECRET=$(openssl rand -hex 32) --app simple-bugtracker-7e17
-  fly secrets set SESSION_SECRET=$(openssl rand -hex 32) --app simple-bugtracker-7e17-staging
+  fly secrets set SESSION_SECRET=$(openssl rand -hex 32) --app remix-starter-7e17
+  fly secrets set SESSION_SECRET=$(openssl rand -hex 32) --app remix-starter-7e17-staging
   ```
 
   If you don't have openssl installed, you can also use [1password](https://1password.com/password-generator/) to generate a random secret, just replace `$(openssl rand -hex 32)` with the generated secret.
@@ -118,11 +118,11 @@ Prior to your first deployment, you'll need to do a few things:
 - Create a persistent volume for the sqlite database for both your staging and production environments. Run the following:
 
   ```sh
-  fly volumes create data --size 1 --app simple-bugtracker-7e17
-  fly volumes create data --size 1 --app simple-bugtracker-7e17-staging
+  fly volumes create data --size 1 --app remix-starter-7e17
+  fly volumes create data --size 1 --app remix-starter-7e17-staging
   ```
 
-Now that everything is set up you can commit and push your changes to your repo. Every commit to your `main` branch will trigger a deployment to your production environment, and every commit to your `dev` branch will trigger a deployment to your staging environment.
+Now that everything is set up you can commit and push your changes to your repo. Every commit to your `master` branch will trigger a deployment to your production environment, and every commit to your `dev` branch will trigger a deployment to your staging environment.
 
 ### Connecting to your database
 
@@ -134,7 +134,7 @@ If you run into any issues deploying to Fly, make sure you've followed all of th
 
 ## GitHub Actions
 
-We use GitHub Actions for continuous integration and deployment. Anything that gets into the `main` branch will be deployed to production after running tests/build/etc. Anything in the `dev` branch will be deployed to staging.
+We use GitHub Actions for continuous integration and deployment. Anything that gets into the `master` branch will be deployed to production after running tests/build/etc. Anything in the `dev` branch will be deployed to staging.
 
 ## Testing
 
