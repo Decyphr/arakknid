@@ -1,7 +1,10 @@
-import { faker } from "@faker-js/faker";
+// import { faker } from "@faker-js/faker";
 
 describe("smoke tests", () => {
-  afterEach(() => {
+  it("should load homepage", () => {
+    cy.visit("/");
+  });
+  /* afterEach(() => {
     cy.cleanupUser();
   });
 
@@ -41,5 +44,5 @@ describe("smoke tests", () => {
     cy.findByRole("button", { name: /save/i }).click();
 
     cy.findByRole("button", { name: /delete/i }).click();
-  });
+  }); */
 });
