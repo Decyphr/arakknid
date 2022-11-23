@@ -1,15 +1,17 @@
 import type { ReactNode } from "react";
-import { Link } from "@remix-run/react";
+import { Form, Link } from "@remix-run/react";
 
 import { useUser } from "~/utils";
 import SidebarNavLink from "./SidebarNavLink";
 import {
+  ArrowLeftCircleIcon,
   BookOpenIcon,
   ChartPieIcon,
   Cog8ToothIcon,
   RectangleStackIcon,
 } from "@heroicons/react/20/solid";
 import SidebarNavMenu from "./SidebarNavMenu";
+import LogoutButton from "../LogoutButton";
 
 export type NavLink = {
   name: string;
@@ -78,6 +80,21 @@ export default function Sidebar() {
               );
             }
           })}
+          <Form
+            action="/logout"
+            method="post"
+            className="flex items-center rounded-lg px-4 py-2 text-zinc-500 hover:bg-zinc-100 hover:text-zinc-700"
+          >
+            <div className="h-4 w-4">
+              <ArrowLeftCircleIcon />
+            </div>
+            <button
+              type="submit"
+              className="ml-3 flex w-full text-left text-sm font-medium"
+            >
+              <span>Logout</span>
+            </button>
+          </Form>
         </nav>
       </div>
 
