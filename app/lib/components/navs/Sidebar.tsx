@@ -5,7 +5,6 @@ import { useUser } from "~/utils";
 import SidebarNavLink from "./SidebarNavLink";
 import {
   ArrowLeftCircleIcon,
-  BookOpenIcon,
   ChartPieIcon,
   Cog8ToothIcon,
   RectangleStackIcon,
