@@ -116,61 +116,62 @@ export default function SignupPage() {
             Sign in to your account
           </h2>
         </div>
-        <Form method="post" className="space-y-6">
-          <div>
-            <label htmlFor="email" className="sr-only">
-              Email address
-            </label>
+        <Form method="post" className="mt-8 space-y-6">
+          <div className="-space-y-px rounded-md shadow-sm">
             <div>
-              <input
-                ref={emailRef}
-                id="email"
-                required
-                autoFocus={true}
-                name="email"
-                type="email"
-                autoComplete="email"
-                aria-invalid={actionData?.errors?.email ? true : undefined}
-                aria-describedby="email-error"
-                className="relative block w-full appearance-none px-3 py-2 text-zinc-900 placeholder-zinc-500 focus:z-10 sm:text-sm"
-                placeholder="Email address"
-              />
-              {actionData?.errors?.email && (
-                <div id="email-error">
-                  <InputErrorMessage message={actionData.errors.email} />
-                </div>
-              )}
+              <label htmlFor="email" className="sr-only">
+                Email address
+              </label>
+              <div>
+                <input
+                  ref={emailRef}
+                  id="email"
+                  required
+                  autoFocus={true}
+                  name="email"
+                  type="email"
+                  autoComplete="email"
+                  aria-invalid={actionData?.errors?.email ? true : undefined}
+                  aria-describedby="email-error"
+                  className="relative block w-full appearance-none rounded-none rounded-t-md px-3 py-2 text-zinc-900 placeholder-zinc-500 focus:z-10 sm:text-sm"
+                  placeholder="Email address"
+                />
+                {actionData?.errors?.email && (
+                  <div id="email-error">
+                    <InputErrorMessage message={actionData.errors.email} />
+                  </div>
+                )}
+              </div>
+            </div>
+
+            <div>
+              <label htmlFor="password" className="sr-only">
+                Password
+              </label>
+              <div>
+                <input
+                  id="password"
+                  ref={passwordRef}
+                  name="password"
+                  type="password"
+                  autoComplete="new-password"
+                  aria-invalid={actionData?.errors?.password ? true : undefined}
+                  aria-describedby="password-error"
+                  className="relative block w-full appearance-none rounded-none rounded-b-md px-3 py-2 text-zinc-900 placeholder-zinc-500 focus:z-10 sm:text-sm"
+                  placeholder="Password"
+                />
+                {actionData?.errors?.password && (
+                  <div id="password-error">
+                    <InputErrorMessage message={actionData.errors.password} />
+                  </div>
+                )}
+              </div>
             </div>
           </div>
-
-          <div>
-            <label htmlFor="password" className="sr-only">
-              Password
-            </label>
-            <div className="mt-1">
-              <input
-                id="password"
-                ref={passwordRef}
-                name="password"
-                type="password"
-                autoComplete="new-password"
-                aria-invalid={actionData?.errors?.password ? true : undefined}
-                aria-describedby="password-error"
-                className="relative block w-full appearance-none px-3 py-2 text-zinc-900 placeholder-zinc-500 focus:z-10 sm:text-sm"
-                placeholder="Password"
-              />
-              {actionData?.errors?.password && (
-                <div className="pt-1 text-red-700" id="password-error">
-                  {actionData.errors.password}
-                </div>
-              )}
-            </div>
-          </div>
-
           <input type="hidden" name="redirectTo" value={redirectTo} />
           <button
             type="submit"
-            className="group relative flex w-full justify-center border border-transparent bg-zinc-800 py-2 px-4 text-sm font-medium text-white hover:bg-zinc-600 focus:outline-none focus:ring-2 focus:ring-zinc-500 focus:ring-offset-2"
+            className="group relative flex w-full justify-center rounded-md border border-transparent bg-zinc-800 py-2 px-4 text-sm font-medium text-white hover:bg-zinc-600 focus:outline-none focus:ring-2 focus:ring-zinc-500 focus:ring-offset-2"
           >
             <span className="absolute inset-y-0 left-0 flex items-center pl-3">
               <LockClosedIcon

@@ -23,6 +23,8 @@ npx create-remix@latest --template remix-run/indie-stack
 - Code formatting with [Prettier](https://prettier.io)
 - Linting with [ESLint](https://eslint.org)
 - Static Types with [TypeScript](https://typescriptlang.org)
+- Form/Schema validation with [Zod](https://zod.dev)
+- Typed TailwindCSS component variants with [CVA](https://github.com/joe-bell/cva)
 
 Not a fan of bits of the stack? Fork it, change it, and use `npx create-remix --template your/repo`! Make it your own.
 

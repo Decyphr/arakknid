@@ -117,76 +117,64 @@ export default function LoginPage() {
           </h2>
         </div>
         <Form method="post" className="mt-8 space-y-6">
-          <div>
-            <label htmlFor="email" className="sr-only">
-              Email address
-            </label>
+          <div className="-space-y-px rounded-md shadow-sm">
             <div>
-              <input
-                ref={emailRef}
-                id="email"
-                required
-                autoFocus={true}
-                name="email"
-                type="email"
-                autoComplete="email"
-                aria-invalid={actionData?.errors?.email ? true : undefined}
-                aria-describedby="email-error"
-                className="relative block w-full appearance-none px-3 py-2 text-zinc-900 placeholder-zinc-500 focus:z-10 sm:text-sm"
-                placeholder="Email address"
-              />
-              {actionData?.errors?.email && (
-                <div id="email-error">
-                  <InputErrorMessage message={actionData.errors.email} />
-                </div>
-              )}
+              <label htmlFor="email" className="sr-only">
+                Email address
+              </label>
+              <div>
+                <input
+                  ref={emailRef}
+                  id="email"
+                  required
+                  autoFocus={true}
+                  name="email"
+                  type="email"
+                  autoComplete="email"
+                  aria-invalid={actionData?.errors?.email ? true : undefined}
+                  aria-describedby="email-error"
+                  className="relative block w-full appearance-none rounded-none rounded-t-md px-3 py-2 text-zinc-900 placeholder-zinc-500 focus:z-10 sm:text-sm"
+                  placeholder="Email address"
+                />
+                {actionData?.errors?.email && (
+                  <div id="email-error">
+                    <InputErrorMessage message={actionData.errors.email} />
+                  </div>
+                )}
+              </div>
+            </div>
+
+            <div>
+              <label htmlFor="password" className="sr-only">
+                Password
+              </label>
+              <div>
+                <input
+                  id="password"
+                  ref={passwordRef}
+                  name="password"
+                  type="password"
+                  autoComplete="current-password"
+                  aria-invalid={actionData?.errors?.password ? true : undefined}
+                  aria-describedby="password-error"
+                  className="relative block w-full appearance-none rounded-none rounded-b-md px-3 py-2 text-zinc-900 placeholder-zinc-500 focus:z-10 sm:text-sm"
+                  placeholder="Password"
+                />
+                {actionData?.errors?.password && (
+                  <div id="password-error">
+                    <InputErrorMessage message={actionData.errors.password} />
+                  </div>
+                )}
+              </div>
             </div>
           </div>
-
-          <div>
-            <label htmlFor="password" className="sr-only">
-              Password
-            </label>
-            <div>
-              <input
-                id="password"
-                ref={passwordRef}
-                name="password"
-                type="password"
-                autoComplete="current-password"
-                aria-invalid={actionData?.errors?.password ? true : undefined}
-                aria-describedby="password-error"
-                className="relative block w-full appearance-none px-3 py-2 text-zinc-900 placeholder-zinc-500 focus:z-10 sm:text-sm"
-                placeholder="Password"
-              />
-              {actionData?.errors?.password && (
-                <div id="password-error">
-                  <InputErrorMessage message={actionData.errors.password} />
-                </div>
-              )}
-            </div>
-          </div>
-
-          <input type="hidden" name="redirectTo" value={redirectTo} />
-          <button
-            type="submit"
-            className="group relative flex w-full justify-center border border-transparent bg-zinc-800 py-2 px-4 text-sm font-medium text-white hover:bg-zinc-600 focus:outline-none focus:ring-2 focus:ring-zinc-500 focus:ring-offset-2"
-          >
-            <span className="absolute inset-y-0 left-0 flex items-center pl-3">
-              <LockClosedIcon
-                className="text-white-500 h-5 w-5"
-                aria-hidden="true"
-              />
-            </span>
-            Log in
-          </button>
           <div className="flex items-center justify-between">
             <div className="flex items-center">
               <input
                 id="remember"
                 name="remember"
                 type="checkbox"
-                className="text-zinc-900"
+                className="h-4 w-4 rounded border-gray-300 text-zinc-900 focus:ring-zinc-900"
               />
               <label
                 htmlFor="remember"
@@ -195,7 +183,7 @@ export default function LoginPage() {
                 Remember me
               </label>
             </div>
-            <div className="text-center text-sm text-zinc-500">
+            <div className="text-center text-sm text-zinc-400">
               Don't have an account?{" "}
               <Link
                 className="text-blue-500 underline"
@@ -208,6 +196,20 @@ export default function LoginPage() {
               </Link>
             </div>
           </div>
+
+          <input type="hidden" name="redirectTo" value={redirectTo} />
+          <button
+            type="submit"
+            className="group relative flex w-full justify-center rounded-md border border-transparent bg-zinc-800 py-2 px-4 text-sm font-medium text-white hover:bg-zinc-600 focus:outline-none focus:ring-2 focus:ring-zinc-500 focus:ring-offset-2"
+          >
+            <span className="absolute inset-y-0 left-0 flex items-center pl-3">
+              <LockClosedIcon
+                className="text-white-500 h-5 w-5"
+                aria-hidden="true"
+              />
+            </span>
+            Log in
+          </button>
         </Form>
       </div>
     </div>
