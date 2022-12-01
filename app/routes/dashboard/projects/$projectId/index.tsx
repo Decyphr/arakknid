@@ -28,7 +28,7 @@ export async function action({ request, params }: ActionArgs) {
   return redirect("/dashboard/projects");
 }
 
-export default function ProjectDetailsPage() {
+export default function ProjectDetailsRoute() {
   const { project } = useLoaderData<typeof loader>();
 
   return (
@@ -48,7 +48,7 @@ export default function ProjectDetailsPage() {
           <TicketCard key={ticket.id} {...ticket} />
         ))}
         <Link
-          to="ticket/create"
+          to="ticket/new"
           className="flex cursor-pointer items-center justify-center rounded border border-dashed border-slate-600 py-8 text-slate-500 transition hover:-translate-y-1 hover:border-emerald-400 hover:bg-emerald-50 hover:text-slate-900"
         >
           <div>

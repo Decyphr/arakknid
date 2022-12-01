@@ -48,7 +48,7 @@ export async function action({ request }: ActionArgs) {
   }
 }
 
-export default function CreateTicketPage() {
+export default function NewTicketRoute() {
   const params = useParams();
 
   return (
@@ -60,7 +60,7 @@ export default function CreateTicketPage() {
         value={params.projectId}
       />
       <input type="text" name="summary" id="summary" />
-      <button type="submit">New Issue</button>
+      <button type="submit">Submit Ticket</button>
     </Form>
   );
 }

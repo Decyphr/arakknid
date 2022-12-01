@@ -55,7 +55,7 @@ export async function action({ request }: ActionArgs) {
   }
 }
 
-export default function NewProjectPage() {
+export default function NewProjectRoute() {
   const actionData = useActionData<typeof action>();
   const titleRef = React.useRef<HTMLInputElement>(null);
 

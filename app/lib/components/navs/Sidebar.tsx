@@ -39,7 +39,7 @@ export default function Sidebar({ currentRoute }: SidebarProps) {
     },
     {
       name: "Settings",
-      href: "/dashboard/account/settings",
+      href: "/settings",
       current: false,
       icon: <Cog8ToothIcon />,
     },
@@ -71,17 +71,12 @@ export default function Sidebar({ currentRoute }: SidebarProps) {
       </div>
 
       <div className="sticky inset-x-0 bottom-0 border-t border-zinc-100">
-        <Link
-          to="/dashboard"
-          className="flex shrink-0 items-center bg-white p-4"
-        >
-          <SidebarNavLink
-            href="/account"
-            name="User Account"
-            current={false}
-            icon={<UserCircleIcon />}
-          />
-        </Link>
+        <SidebarNavLink
+          href="/account"
+          name="User Account"
+          current={false}
+          icon={<UserCircleIcon />}
+        />
       </div>
     </div>
   );
