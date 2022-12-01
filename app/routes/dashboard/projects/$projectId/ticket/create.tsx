@@ -17,7 +17,7 @@ export async function action({ request }: ActionArgs) {
   try {
     const validatedForm = validationSchema.parse(formData);
     const { summary, projectId } = validatedForm;
-    const ticket = await createTicket({
+    await createTicket({
       summary,
       projectId,
     });

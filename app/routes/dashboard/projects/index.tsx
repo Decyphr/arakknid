@@ -23,7 +23,7 @@ export default function ProjectIndexPage() {
       <Header title="Projects"></Header>
       <div className="grid grid-cols-4 gap-5 lg:gap-8">
         {data.projectListItems.map((project) => (
-          <ProjectCard {...project} />
+          <ProjectCard key={project.id} {...project} />
         ))}
         <Link
           to="create"

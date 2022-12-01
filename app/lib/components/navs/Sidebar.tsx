@@ -1,7 +1,5 @@
-import { ReactNode, useEffect, useState } from "react";
+import type { ReactNode } from "react";
 import { Link } from "@remix-run/react";
-
-import { useUser } from "~/utils";
 import SidebarNavLink from "./SidebarNavLink";
 import {
   ArrowLeftCircleIcon,
@@ -26,7 +24,7 @@ type SidebarProps = {
 export default function Sidebar({ currentRoute }: SidebarProps) {
   // TODO: identify a way to update the current navLink
 
-  const [navigation, setNavigation] = useState([
+  const navigation = [
     {
       name: "Dashboard",
       href: "/dashboard",
@@ -45,15 +43,7 @@ export default function Sidebar({ currentRoute }: SidebarProps) {
       current: false,
       icon: <Cog8ToothIcon />,
     },
-  ]);
-
-  useEffect(() => {
-    setNavigation(
-      navigation.map((n) => ({ ...n, current: currentRoute == n.href }))
-    );
-  }, [currentRoute]);
-
-  const user = useUser();
+  ];
   return (
     <div className="flex h-screen flex-col justify-between border-r border-r-slate-700 bg-white">
       <div className="px-4 py-6">
