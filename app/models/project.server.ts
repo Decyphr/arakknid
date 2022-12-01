@@ -11,7 +11,7 @@ export function getProject({
   userId: User["id"];
 }) {
   return prisma.project.findFirst({
-    select: { id: true, title: true, description: true },
+    select: { id: true, title: true, description: true, tickets: true },
     where: { id, userId },
   });
 }
@@ -19,7 +19,7 @@ export function getProject({
 export function getProjectListItems({ userId }: { userId: User["id"] }) {
   return prisma.project.findMany({
     where: { userId },
-    select: { id: true, title: true },
+    select: { id: true, title: true, description: true },
   });
 }
 
@@ -40,6 +40,22 @@ export function createProject({
         },
       },
     },
+  });
+}
+
+export function updateProject({
+  id,
+  title,
+  description,
+}: Pick<Project, "id" | "title" | "description"> & { userId: User["id"] }) {
+  const data: any = {};
+  if (title) data.title = title;
+  if (description) data.description = description;
+
+  // TODO: ensure that only a user that owns a project can delete it
+  return prisma.project.update({
+    where: { id },
+    data,
   });
 }
 

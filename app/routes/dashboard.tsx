@@ -12,17 +12,17 @@ export async function loader({ request }: LoaderArgs) {
 
 export default function DashboardLayout() {
   return (
-    <div className="grid grid-cols-12">
-      <div className="col-span-2">
-        <Sidebar />
-      </div>
-      <main className="col-span-10">
-        <div className="mx-auto py-6 sm:px-6 lg:px-8">
-          <div className="px-4 py-6 sm:px-0">
+    <div className="flex">
+      <section className="w-20">
+        <Sidebar currentRoute="/dashboard" />
+      </section>
+      <section className="w-full">
+        <main>
+          <div className="mx-auto p-6 lg:p-8">
             <Outlet />
           </div>
-        </div>
-      </main>
+        </main>
+      </section>
     </div>
   );
 }

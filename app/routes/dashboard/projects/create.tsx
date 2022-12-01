@@ -6,6 +6,7 @@ import { z } from "zod";
 
 import { requireUserId } from "~/session.server";
 import { createProject } from "~/models/project.server";
+import { DocumentPlusIcon } from "@heroicons/react/20/solid";
 
 export async function action({ request }: ActionArgs) {
   const userId = await requireUserId(request);
@@ -65,52 +66,55 @@ export default function NewProjectPage() {
   }, [actionData]);
 
   return (
-    <Form
-      method="post"
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        gap: 8,
-        width: "100%",
-      }}
-    >
-      <div>
-        <label className="flex w-full flex-col gap-1">
-          <span>Title: </span>
+    <Form method="post" className="mt-5 md:col-span-2 md:mt-0">
+      <div className="m-auto max-w-5xl rounded bg-white p-8 shadow">
+        <h2 className="mb-8 border-b pb-4 text-2xl font-bold">
+          <span className="mr-4 inline-block">
+            <DocumentPlusIcon className="m-auto h-6 w-6" />
+          </span>
+          Create a New Project
+        </h2>
+        <div>
+          <label
+            htmlFor="title"
+            className="text-md block font-medium text-gray-700"
+          >
+            Project Title
+          </label>
           <input
             ref={titleRef}
             name="title"
-            className="flex-1 rounded-md border-2 border-blue-500 px-3 text-lg leading-loose"
+            className="mt-1 block w-full rounded-md border-2 border-indigo-500 p-3 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
             aria-invalid={actionData?.errors?.title ? true : undefined}
             aria-errormessage={
               actionData?.errors?.title ? "title-error" : undefined
             }
           />
-        </label>
-        {actionData?.errors?.title && (
-          <div className="pt-1 text-xs text-red-700" id="title-error">
-            <em>{actionData?.errors?.title}</em>
-          </div>
-        )}
-      </div>
+          {actionData?.errors?.title && (
+            <div className="pt-1 text-xs text-red-700" id="title-error">
+              <em>{actionData?.errors?.title}</em>
+            </div>
+          )}
+        </div>
 
-      <div>
-        <label className="flex w-full flex-col gap-1">
-          <span>Description: </span>
-          <input
-            name="description"
-            className="flex-1 rounded-md border-2 border-blue-500 px-3 text-lg leading-loose"
-          />
-        </label>
-      </div>
+        <div>
+          <label className="flex w-full flex-col gap-1">
+            <span>Description: </span>
+            <input
+              name="description"
+              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+            />
+          </label>
+        </div>
 
-      <div className="text-right">
-        <button
-          type="submit"
-          className="rounded bg-blue-500 py-2 px-4 text-white hover:bg-blue-600 focus:bg-blue-400"
-        >
-          Save
-        </button>
+        <div className="text-right">
+          <button
+            type="submit"
+            className="inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+          >
+            Save
+          </button>
+        </div>
       </div>
     </Form>
   );

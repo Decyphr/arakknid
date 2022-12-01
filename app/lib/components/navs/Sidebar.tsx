@@ -1,46 +1,43 @@
-import type { ReactNode } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import { Link } from "@remix-run/react";
 
 import { useUser } from "~/utils";
 import SidebarNavLink from "./SidebarNavLink";
 import {
   ArrowLeftCircleIcon,
+  BugAntIcon,
   ChartPieIcon,
   Cog8ToothIcon,
   RectangleStackIcon,
+  UserCircleIcon,
 } from "@heroicons/react/20/solid";
-import SidebarNavMenu from "./SidebarNavMenu";
 
 export type NavLink = {
   name: string;
   href: string;
   current: boolean;
   icon?: ReactNode;
-  nested?: Array<any>;
 };
 
-export default function Sidebar() {
-  const navigation = [
+type SidebarProps = {
+  currentRoute: string;
+};
+
+export default function Sidebar({ currentRoute }: SidebarProps) {
+  // TODO: identify a way to update the current navLink
+
+  const [navigation, setNavigation] = useState([
     {
       name: "Dashboard",
       href: "/dashboard",
-      current: true,
+      current: false,
       icon: <ChartPieIcon />,
-      nested: [],
     },
     {
       name: "Projects",
       href: "/dashboard/projects",
       current: false,
       icon: <RectangleStackIcon />,
-      nested: [
-        {
-          name: "All Projects",
-          href: "/dashboard/projects",
-          current: false,
-          icon: <RectangleStackIcon />,
-        },
-      ],
     },
     {
       name: "Settings",
@@ -48,27 +45,31 @@ export default function Sidebar() {
       current: false,
       icon: <Cog8ToothIcon />,
     },
-  ];
+  ]);
+
+  useEffect(() => {
+    setNavigation(
+      navigation.map((n) => ({ ...n, current: currentRoute == n.href }))
+    );
+  }, [currentRoute]);
 
   const user = useUser();
   return (
-    <div className="flex h-screen flex-col justify-between border-r bg-white">
+    <div className="flex h-screen flex-col justify-between border-r border-r-slate-700 bg-white">
       <div className="px-4 py-6">
-        <span className="block h-10 w-32 rounded-lg bg-zinc-200"></span>
+        <div className="border-b-2 border-slate-900 p-2">
+          <BugAntIcon className="m-auto block h-8 w-8" />
+        </div>
 
-        <nav aria-label="Main Nav" className="mt-6 flex flex-col space-y-1">
+        <nav aria-label="Main Nav" className="mt-12 flex flex-col space-y-3">
           {navigation.map((link: NavLink, idx) => {
-            if (link?.nested?.length)
-              return <SidebarNavMenu key={`${idx}-${link.name}`} {...link} />;
-            else {
-              return (
-                <SidebarNavLink
-                  key={`${idx}-${link.name}`}
-                  icon={link.icon}
-                  {...link}
-                />
-              );
-            }
+            return (
+              <SidebarNavLink
+                key={`${idx}-${link.name}`}
+                icon={link.icon}
+                {...link}
+              />
+            );
           })}
           <SidebarNavLink
             href="/logout"
@@ -82,20 +83,14 @@ export default function Sidebar() {
       <div className="sticky inset-x-0 bottom-0 border-t border-zinc-100">
         <Link
           to="/dashboard"
-          className="flex shrink-0 items-center bg-white p-4 hover:bg-zinc-50"
+          className="flex shrink-0 items-center bg-white p-4"
         >
-          <img
-            alt="Man"
-            src="https://images.unsplash.com/photo-1600486913747-55e5470d6f40?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
-            className="h-10 w-10 rounded-full object-cover"
+          <SidebarNavLink
+            href="/account"
+            name="User Account"
+            current={false}
+            icon={<UserCircleIcon />}
           />
-
-          <div className="ml-1.5">
-            <p className="text-xs">
-              <strong className="block font-medium">Account</strong>
-              <span>{user.email}</span>
-            </p>
-          </div>
         </Link>
       </div>
     </div>
