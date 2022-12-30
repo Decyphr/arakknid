@@ -1,5 +1,4 @@
 import type { ReactNode } from "react";
-import { Link } from "@remix-run/react";
 import SidebarNavLink from "./SidebarNavLink";
 import {
   ArrowLeftCircleIcon,
@@ -9,6 +8,7 @@ import {
   RectangleStackIcon,
   UserCircleIcon,
 } from "@heroicons/react/20/solid";
+import { Link } from "@remix-run/react";
 
 export type NavLink = {
   name: string;
@@ -45,9 +45,9 @@ export default function Sidebar({ currentRoute }: SidebarProps) {
     },
   ];
   return (
-    <div className="flex h-screen flex-col justify-between border-r border-r-slate-700 bg-white">
+    <div className="flex h-screen flex-col justify-between border-r border-r-white">
       <div className="px-4 py-6">
-        <div className="border-b-2 border-slate-900 p-2">
+        <div className="border-b border-white p-2">
           <BugAntIcon className="m-auto block h-8 w-8" />
         </div>
 
@@ -70,13 +70,12 @@ export default function Sidebar({ currentRoute }: SidebarProps) {
         </nav>
       </div>
 
-      <div className="sticky inset-x-0 bottom-0 border-t border-zinc-100">
-        <SidebarNavLink
-          href="/account"
-          name="User Account"
-          current={false}
-          icon={<UserCircleIcon />}
-        />
+      <div className="sticky inset-x-0 bottom-0 border-t border-white p-6">
+        <Link to="account">
+          <span className="m-auto block h-6 w-6">
+            <UserCircleIcon />
+          </span>
+        </Link>
       </div>
     </div>
   );

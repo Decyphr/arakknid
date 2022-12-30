@@ -90,7 +90,7 @@ export const meta: MetaFunction = () => {
 
 export default function LoginPage() {
   const [searchParams] = useSearchParams();
-  const redirectTo = searchParams.get("redirectTo") || "/dashboard";
+  const redirectTo = searchParams.get("redirectTo") || "/dashboard/projects";
   const actionData = useActionData<typeof action>();
   const emailRef = React.useRef<HTMLInputElement>(null);
   const passwordRef = React.useRef<HTMLInputElement>(null);
@@ -109,10 +109,10 @@ export default function LoginPage() {
         <div>
           <img
             className="mx-auto h-12 w-auto"
-            src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-            alt="Bugtracker"
+            src="https://tailwindui.com/img/logos/mark.svg?color=white"
+            alt="Arraknid"
           />
-          <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-zinc-900">
+          <h2 className="mt-6 text-center text-3xl font-bold text-white">
             Sign in to your account
           </h2>
         </div>
@@ -157,7 +157,7 @@ export default function LoginPage() {
                   autoComplete="current-password"
                   aria-invalid={actionData?.errors?.password ? true : undefined}
                   aria-describedby="password-error"
-                  className="relative block w-full appearance-none rounded-none rounded-b-md px-3 py-2 text-zinc-900 placeholder-zinc-500 focus:z-10 sm:text-sm"
+                  className="relative block w-full appearance-none rounded-none rounded-b-md px-3 py-2 text-zinc-900 placeholder-zinc-500 focus:z-10  sm:text-sm"
                   placeholder="Password"
                 />
                 {actionData?.errors?.password && (
@@ -174,19 +174,19 @@ export default function LoginPage() {
                 id="remember"
                 name="remember"
                 type="checkbox"
-                className="h-4 w-4 rounded border-gray-300 text-zinc-900 focus:ring-zinc-900"
+                className="h-4 w-4 rounded border-gray-300 text-red-400 focus:ring-zinc-900"
               />
               <label
                 htmlFor="remember"
-                className="ml-2 block text-sm text-zinc-900"
+                className="ml-2 block text-sm text-zinc-100"
               >
                 Remember me
               </label>
             </div>
-            <div className="text-center text-sm text-zinc-400">
+            <div className="text-center text-sm text-zinc-300">
               Don't have an account?{" "}
               <Link
-                className="text-blue-500 underline"
+                className="text-zinc-100 underline transition hover:text-red-400"
                 to={{
                   pathname: "/signup",
                   search: searchParams.toString(),
@@ -200,11 +200,11 @@ export default function LoginPage() {
           <input type="hidden" name="redirectTo" value={redirectTo} />
           <button
             type="submit"
-            className="group relative flex w-full justify-center rounded-md border border-transparent bg-zinc-800 py-2 px-4 text-sm font-medium text-white hover:bg-zinc-600 focus:outline-none focus:ring-2 focus:ring-zinc-500 focus:ring-offset-2"
+            className="group relative flex w-full justify-center rounded-md border border-transparent bg-red-600 py-2 px-4 text-sm font-medium text-white transition hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-zinc-500 focus:ring-offset-2"
           >
             <span className="absolute inset-y-0 left-0 flex items-center pl-3">
               <LockClosedIcon
-                className="text-white-500 h-5 w-5"
+                className="h-5 w-5 text-white"
                 aria-hidden="true"
               />
             </span>

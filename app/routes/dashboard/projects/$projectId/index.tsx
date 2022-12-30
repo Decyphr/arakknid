@@ -43,13 +43,13 @@ export default function ProjectDetailsRoute() {
           </button>
         </Form>
       </Header>
-      <div className="grid grid-cols-4 gap-8">
+      <div className="grid grid-cols-6 gap-8">
         {project.tickets.map((ticket) => (
           <TicketCard key={ticket.id} {...ticket} />
         ))}
         <Link
           to="ticket/new"
-          className="flex cursor-pointer items-center justify-center rounded border border-dashed border-slate-600 py-8 text-slate-500 transition hover:-translate-y-1 hover:border-emerald-400 hover:bg-emerald-50 hover:text-slate-900"
+          className="flex cursor-pointer items-center justify-center rounded border border-dashed border-slate-200 py-8 text-slate-200 transition hover:border-white hover:text-white"
         >
           <div>
             <PlusIcon className="m-auto mb-2 h-6 w-6" />

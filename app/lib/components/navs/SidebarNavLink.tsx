@@ -4,8 +4,8 @@ import type { NavLink } from "./Sidebar";
 export default function SidebarNavLink(props: NavLink) {
   const baseClasses = "flex items-center rounded-lg p-2 transition";
   const inactiveClasses =
-    "text-slate-500 border-2 border-transparent hover:border-slate-500 hover:text-slate-900";
-  const activeClasses = "text-slate-900 border-2 border-slate-900";
+    "text-slate-200 border border-transparent hover:border-white hover:text-white";
+  const activeClasses = "text-black bg-white shadow";
 
   const classes =
     baseClasses + " " + (props.current ? activeClasses : inactiveClasses);

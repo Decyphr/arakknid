@@ -14,7 +14,7 @@ export default function ProjectCard({
   return (
     <Link
       to={id}
-      className="cursor-pointer rounded border-2 border-transparent bg-white p-5 shadow transition hover:-translate-y-1 hover:border-indigo-400 hover:bg-indigo-50"
+      className="cursor-pointer rounded border border-white bg-black p-5 transition hover:bg-white hover:text-black"
     >
       <h2 className="mb-2 text-2xl font-black">{title}</h2>
       <p className="text-slate-500">
